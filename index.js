@@ -68,8 +68,9 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 
 app.get("/", (req, res) => res.send("hello from the server"));
 app.get("/api", (req, res) => res.send(data));
-app.get("/farm/:id", (req, res) => {
-  res.send(JSON.parse(data)[req.params.id]);
+app.get("/farmDetail", (req, res) => {
+  console.log(req.query);
+  res.send(JSON.parse(data)[req.query.id]);
 });
 
 app.listen(5000, () =>
