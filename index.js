@@ -1,7 +1,7 @@
 const fs = require("fs");
-const http = require("http");
-const url = require("url");
 const express = require("express");
+// const http = require("http");
+// const url = require("url");
 // const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
@@ -68,11 +68,10 @@ const data = fs.readFileSync(`${__dirname}/dev-data/data.json`, "utf-8");
 
 app.get("/", (req, res) => res.send("hello from the server"));
 app.get("/api", (req, res) => res.send(data));
-
 app.get("/farm/:id", (req, res) => {
   res.send(JSON.parse(data)[req.params.id]);
 });
 
-app.listen(5000, () => {
-  console.log("Server listening on port 5000, Ctrl+C to stop");
-});
+app.listen(5000, () =>
+  console.log("Server listening on port 5000, Ctrl+C to stop")
+);
